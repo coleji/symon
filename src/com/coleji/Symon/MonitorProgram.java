@@ -76,12 +76,12 @@ public abstract class MonitorProgram {
 		String hashOriginal = this.salt + hostName + "-" + subClassName + "-" + this.argString + "-" + this.checkResult + "-" + macAddress + "-" + MonitorProgram.getDateString() + this.salt;
 		String hash = MD5Wrapper.getMD5Hash(hashOriginal);
 		String command = "wget -qO- " + this.notifyProcURL + 
-				"?h=" + hostName.trim() + 
-				"&p=" + subClassName.trim() +
-				"&a=" + this.argString + 
-				"&s=" + this.checkResult + 
-				"&m=" + macAddress + 
-				"&d=" + hash + 
+				"?HT=" + hostName.trim() + 
+				"&PG=" + subClassName.trim() +
+				"&AG=" + this.argString + 
+				"&ST=" + this.checkResult + 
+				"&MC=" + macAddress + 
+				"&SH=" + hash + 
 				" &> /dev/null";
 		System.out.println("executing " + command);
 		ShellManager.getInstance().execute(command);
