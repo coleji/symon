@@ -83,7 +83,6 @@ public abstract class MonitorProgram {
 				"&MC=" + macAddress + 
 				"&SH=" + hash + 
 				" &> /dev/null";
-		System.out.println("executing " + command);
 		ShellManager.getInstance().execute(command);
 	}
 	
