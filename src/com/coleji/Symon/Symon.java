@@ -1,5 +1,6 @@
 package com.coleji.Symon;
 
+import com.coleji.Symon.MonitorPrograms.Fail2BanLoaded;
 import com.coleji.Symon.MonitorPrograms.MdadmCheck;
 import com.coleji.Symon.MonitorPrograms.MountCheck;
 import com.coleji.Util.PropertiesWrapper;
@@ -7,6 +8,7 @@ import com.coleji.Util.PropertiesWrapper;
 public class Symon {
 	private static final int MONITOR_PROGRAM_MDADM_CHECK = 1;
 	private static final int MONITOR_PROGRAM_MOUNT_CHECK = 2;
+	private static final int MONITOR_PROGRAM_FAIL2BAN_LOADED = 3;
 
 	public static void main(String[] args) {		
 		if (args.length < 2) {
@@ -24,6 +26,10 @@ public class Symon {
 			case Symon.MONITOR_PROGRAM_MOUNT_CHECK:
 				// devicename, mountpoint
 				new MountCheck(props, args[2], args[3]);
+				break;
+			case Symon.MONITOR_PROGRAM_FAIL2BAN_LOADED:
+				new Fail2BanLoaded(props);
+				break;
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
