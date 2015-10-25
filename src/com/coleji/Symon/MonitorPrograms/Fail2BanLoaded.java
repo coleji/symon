@@ -12,8 +12,8 @@ public class Fail2BanLoaded extends com.coleji.Symon.MonitorProgram {
 		this.argString = "";
 		try {
 			CommandWrapper cw = ShellManager.getInstance().execute("fail2ban-client ping");
-			String status = cw.getMainOutputLine(0).trim();
-			if (status.equals(LOADED_OUTPUT)) {
+			String status = cw.getMainOutputLine(0);
+			if (status != null && status.trim().equals(LOADED_OUTPUT)) {
 				this.setResultNormal();
 			} else {
 				this.setResultBad("Fail2Ban does not appear to be loaded; ping returned: " + status);
