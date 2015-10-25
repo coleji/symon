@@ -1,7 +1,5 @@
 package com.coleji.Symon;
 
-import java.io.IOException;
-
 import com.coleji.Symon.MonitorPrograms.MdadmCheck;
 import com.coleji.Symon.MonitorPrograms.MountCheck;
 import com.coleji.Util.PropertiesWrapper;
@@ -27,7 +25,7 @@ public class Symon {
 				// devicename, mountpoint
 				new MountCheck(props, args[2], args[3]);
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
