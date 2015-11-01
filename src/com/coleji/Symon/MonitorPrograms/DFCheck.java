@@ -36,6 +36,7 @@ public class DFCheck extends com.coleji.Symon.MonitorProgram {
 				String[] StringArrTrimmed = new String[6];
 				for (String s : StringArr) {
 					if (s.equals("")) continue;
+					System.out.println(element + "  =  " + s);
 					StringArrTrimmed[element++] = s;
 				}
 				// StringArrTrimmed should look like e.g.  (device, total 1K, used, available, use%, mountpoint)
