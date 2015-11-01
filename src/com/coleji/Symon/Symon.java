@@ -4,6 +4,7 @@ import com.coleji.Symon.MonitorPrograms.DFCheck;
 import com.coleji.Symon.MonitorPrograms.Fail2BanLoaded;
 import com.coleji.Symon.MonitorPrograms.MdadmCheck;
 import com.coleji.Symon.MonitorPrograms.MountCheck;
+import com.coleji.Symon.MonitorPrograms.ProcessRunningCheck;
 import com.coleji.Util.PropertiesWrapper;
 
 public class Symon {
@@ -11,6 +12,7 @@ public class Symon {
 	private static final int MONITOR_PROGRAM_MOUNT_CHECK = 2;
 	private static final int MONITOR_PROGRAM_FAIL2BAN_LOADED = 3;
 	private static final int MONITOR_PROGRAM_DF_CHECK = 4;
+	private static final int MONITOR_PROGRAM_PROCESS_RUNNING_CHECK = 5;
 
 	public static void main(String[] args) {		
 		if (args.length < 2) {
@@ -35,6 +37,11 @@ public class Symon {
 			case Symon.MONITOR_PROGRAM_DF_CHECK:
 				// device, mountpoint, alarmAtUsagePct
 				new DFCheck(props, args[2], args[3], new Integer(args[4]));
+				break;
+			case Symon.MONITOR_PROGRAM_PROCESS_RUNNING_CHECK:
+				// process name
+				new ProcessRunningCheck(props, args[2]);
+				break;
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
