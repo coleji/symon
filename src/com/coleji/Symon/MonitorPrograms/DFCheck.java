@@ -37,7 +37,6 @@ public class DFCheck extends com.coleji.Symon.MonitorProgram {
 				String[] StringArrTrimmed = new String[6];
 				for (String s : StringArr) {
 					if (s.equals("")) continue;
-					System.out.println(element + "  =  " + s);
 					StringArrTrimmed[element++] = s;
 				}
 				// StringArrTrimmed should look like e.g.  (device, total 1K, used, available, use%, mountpoint)
@@ -70,56 +69,4 @@ public class DFCheck extends com.coleji.Symon.MonitorProgram {
 		
 		
 	}
-	/*
-	public static void main(String[] args) {
-		String device = "/dev/sda1";
-		String mountPoint = "/boot";
-		Integer alarmAtUsagePct = 60;
-		try {
-			CommandWrapper cw = ShellManager.getInstance().execute("df");
-			BufferedReader br = cw.getMainOutputAsBufferedReader();
-			String line = br.readLine(); // skip the header line
-			
-			int element = 0;
-			while ((line = br.readLine()) != null) {
-				element = 0;
-				System.out.println(line);
-				String[] StringArr = line.split(" ");
-				String[] StringArrTrimmed = new String[6];
-				for (String s : StringArr) {
-					if (s.equals("")) continue;
-					System.out.println(element + "  =  " + s);
-					StringArrTrimmed[element++] = s;
-				}
-				// StringArrTrimmed should look like e.g.  (device, total 1K, used, available, use%, mountpoint)
-				// /dev/sda1
-				// 240972
-				// 168719
-				// 59812
-				// 74%
-				// /boot
-
-				
-				if (!StringArrTrimmed[ARR_POSITION_DEVICE].equals(device) || !StringArrTrimmed[ARR_POSITION_MOUNTPT].equals(mountPoint)) {
-					System.out.println("apparently \'" + StringArrTrimmed[ARR_POSITION_DEVICE] + "\' != \'" + device + "\'");
-					System.out.println("apparently \'" + StringArrTrimmed[ARR_POSITION_MOUNTPT] + "\' != \'" + mountPoint + "\'");
-					continue;
-				}  // else, found it!
-				
-				// trim % off the end
-				Integer usage = new Integer(StringArrTrimmed[ARR_POSITION_USAGEPCT].substring(0, StringArrTrimmed[ARR_POSITION_USAGEPCT].length() - 1));
-				
-				if (usage < alarmAtUsagePct) {
-					System.out.println("good");
-				} else {
-					System.out.println("bad");
-				}
-				return;
-			}
-			System.out.println("not found");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	*/
 }

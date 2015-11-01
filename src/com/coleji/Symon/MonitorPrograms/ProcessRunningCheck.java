@@ -11,7 +11,7 @@ public class ProcessRunningCheck extends com.coleji.Symon.MonitorProgram {
 		try {
 			CommandWrapper cw = ShellManager.getInstance().execute("pidof " + processName);
 			String status = cw.getMainOutputLine(0);
-			if (status != null) {
+			if (status == null) {
 				this.setResultBad("Process " + processName + " is not running.");
 			} else {
 				this.argString += this.argStringSeparator + status;
