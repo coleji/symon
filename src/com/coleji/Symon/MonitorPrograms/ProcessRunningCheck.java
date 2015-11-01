@@ -14,7 +14,6 @@ public class ProcessRunningCheck extends com.coleji.Symon.MonitorProgram {
 			if (status == null) {
 				this.setResultBad("Process " + processName + " is not running.");
 			} else {
-				this.argString += this.argStringSeparator + status;
 				this.setResultNormal();
 			}
 		} catch (Exception e) {
