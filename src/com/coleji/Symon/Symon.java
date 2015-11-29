@@ -1,5 +1,6 @@
 package com.coleji.Symon;
 
+import com.coleji.Symon.MonitorPrograms.BackupRan;
 import com.coleji.Symon.MonitorPrograms.DFCheck;
 import com.coleji.Symon.MonitorPrograms.Fail2BanLoaded;
 import com.coleji.Symon.MonitorPrograms.MdadmCheck;
@@ -13,6 +14,8 @@ public class Symon {
 	private static final int MONITOR_PROGRAM_FAIL2BAN_LOADED = 3;
 	private static final int MONITOR_PROGRAM_DF_CHECK = 4;
 	private static final int MONITOR_PROGRAM_PROCESS_RUNNING_CHECK = 5;
+	private static final int MONITOR_PROGRAM_BACKUP_RAN = 6;
+
 
 	public static void main(String[] args) {		
 		if (args.length < 2) {
@@ -41,6 +44,10 @@ public class Symon {
 			case Symon.MONITOR_PROGRAM_PROCESS_RUNNING_CHECK:
 				// process name
 				new ProcessRunningCheck(props, args[2]);
+				break;
+			case Symon.MONITOR_PROGRAM_BACKUP_RAN:
+				// directory
+				new BackupRan(props, args[2]);
 				break;
 			}
 		} catch (Exception e) {
