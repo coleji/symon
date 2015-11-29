@@ -8,7 +8,6 @@ import com.coleji.Shell.ShellManager;
 import com.coleji.Util.PropertiesWrapper;
 
 public class BackupRan extends com.coleji.Symon.MonitorProgram {
-	public static final String dummyText = "yes";
 	
 	public BackupRan(PropertiesWrapper props, String directory) {
 		this.setProperties(props);
@@ -16,10 +15,10 @@ public class BackupRan extends com.coleji.Symon.MonitorProgram {
 		SimpleDateFormat sdf = new SimpleDateFormat("Y-M-d");
 		String dateString = sdf.format(new Date());
 		try {
-			String command = "if test -e " + directory + "/" + dateString + ".tar.gz ; then echo \"" + dummyText + "\"; fi";
+			String command = "test -e " + directory + "/" + dateString + ".tar.gz";
 			CommandWrapper cw = ShellManager.getInstance().execute(command);
-			String status = cw.getMainOutputLine(0);
-			if (status != null && status.trim().equals(dummyText)) {
+			int exitStatus = cw.getExitValue();
+			if (exitStatus == 0) {
 				this.setResultNormal();
 			} else {
 				this.setResultBad("DB Backup does not appear to have run");
