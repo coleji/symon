@@ -5,6 +5,7 @@ import com.coleji.Symon.MonitorPrograms.DFCheck;
 import com.coleji.Symon.MonitorPrograms.Fail2BanLoaded;
 import com.coleji.Symon.MonitorPrograms.MdadmCheck;
 import com.coleji.Symon.MonitorPrograms.MountCheck;
+import com.coleji.Symon.MonitorPrograms.Ping;
 import com.coleji.Symon.MonitorPrograms.ProcessRunningCheck;
 import com.coleji.Util.PropertiesWrapper;
 
@@ -15,6 +16,7 @@ public class Symon {
 	private static final int MONITOR_PROGRAM_DF_CHECK = 4;
 	private static final int MONITOR_PROGRAM_PROCESS_RUNNING_CHECK = 5;
 	private static final int MONITOR_PROGRAM_BACKUP_RAN = 6;
+	private static final int MONITOR_PROGRAM_PING = 7;
 
 
 	public static void main(String[] args) {		
@@ -49,6 +51,8 @@ public class Symon {
 				// directory
 				new BackupRan(props, args[2]);
 				break;
+			case Symon.MONITOR_PROGRAM_PING:
+				new Ping(props, args[2]);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
