@@ -10,9 +10,10 @@ public class Ping extends com.coleji.Symon.MonitorProgram {
 		this.argString = url;
 		try {
 			String command = "curl " + url;
-			CommandWrapper cw = ShellManager.getInstance().execute(command);
+			CommandWrapper cw = ShellManager.getInstance().execute(command, null, 20000, null, null);
+			String result = cw.getMainOutputAsString().trim();
 			int exitStatus = cw.getExitValue();
-			if (exitStatus == 0 && cw.getMainOutputAsString() == "pong") {
+			if (exitStatus == 0 && result.equals("pong")) {
 				this.setResultNormal();
 			} else {
 				this.setResultBad("Api server at " + url + " is down");
