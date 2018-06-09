@@ -83,14 +83,18 @@ public abstract class MonitorProgram {
 				"&MC=" + macAddress + 
 				"&SH=" + hash + 
 				" &> /dev/null";*/
+
 		String command =	"curl " + this.notifyProcURL + " " +
-							"-d \"symon-host=" + hostName.trim() + "\" " + 
-							"-d \"symon-program=" + subClassName.trim() + "\" " + 
-							"-d \"symon-argString=" + this.argString + "\" " + 
-							"-d \"symon-status=" + this.checkResult + "\" " + 
-							"-d \"symon-mac=" + macAddress + "\" " +
-							"-d \"symon-hash=" + hash + "\"" + 
+							"-d symon-host=" + hostName.trim() + 
+							"&symon-program=" + subClassName.trim() + 
+							"&symon-argString=" + this.argString + 
+							"&symon-status=" + this.checkResult + 
+							"&symon-mac=" + macAddress + 
+							"&symon-hash=" + hash + 
 							" &> /dev/null";
+
+
+		System.out.println(command);
 		
 		ShellManager.getInstance().execute(command);
 	}
