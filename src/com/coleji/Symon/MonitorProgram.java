@@ -75,14 +75,23 @@ public abstract class MonitorProgram {
 		String subClassName = this.getClass().getSimpleName();
 		String hashOriginal = this.salt + hostName + "-" + subClassName + "-" + this.argString + "-" + this.checkResult + "-" + macAddress + "-" + MonitorProgram.getDateString() + this.salt;
 		String hash = MD5Wrapper.getMD5Hash(hashOriginal);
-		String command = "wget -qO- " + this.notifyProcURL + 
+		/*String command = "wget -qO- " + this.notifyProcURL + 
 				"?HT=" + hostName.trim() + 
 				"&PG=" + subClassName.trim() +
 				"&AG=" + this.argString + 
 				"&ST=" + this.checkResult + 
 				"&MC=" + macAddress + 
 				"&SH=" + hash + 
-				" &> /dev/null";
+				" &> /dev/null";*/
+		String command =	"curl " + this.notifyProcURL + " " +
+							"-d \"symon-host=" + hostName.trim() + "\" " + 
+							"-d \"symon-program=" + subClassName.trim() + "\" " + 
+							"-d \"symon-argString=" + this.argString + "\" " + 
+							"-d \"symon-status=" + this.checkResult + "\" " + 
+							"-d \"symon-mac=" + macAddress + "\" " +
+							"-d \"symon-hash=" + hash + "\"" + 
+							" &> /dev/null";
+		
 		ShellManager.getInstance().execute(command);
 	}
 	
