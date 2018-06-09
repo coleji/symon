@@ -94,7 +94,6 @@ public abstract class MonitorProgram {
 							" &> /dev/null";
 
 
-		System.out.println(command);
 		
 		ShellManager.getInstance().execute(command);
 	}
